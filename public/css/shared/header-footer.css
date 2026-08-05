@@ -1,0 +1,153 @@
+.site-header {
+    background-color: #ffffff;
+    border-bottom: 1px solid var(--color-border);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+    padding: 15px 0;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+}
+
+.logo-icon {
+    background-color: var(--color-primary);
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 1.3rem;
+    width: 40px;
+    height: 40px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-text-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-title {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--color-dark);
+    line-height: 1.2;
+}
+
+.logo-subtitle {
+    font-size: 0.8rem;
+    color: var(--color-muted);
+}
+
+.nav-menu {
+    display: flex;
+    gap: 25px;
+    list-style: none;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #5a6c7d;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+    color: var(--color-primary);
+}
+
+.site-footer {
+    background-color: var(--color-dark);
+    color: #ecf0f1;
+    padding: 60px 0 20px 0;
+    margin-top: 80px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.footer-brand,
+.footer-tribute {
+    flex: 1.5;
+}
+
+.footer-nav {
+    flex: 1;
+}
+
+.site-footer h3 {
+    color: #ffffff;
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+}
+
+.site-footer h4 {
+    color: var(--color-primary);
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.site-footer p {
+    color: #b2bec3;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.footer-nav ul {
+    list-style: none;
+}
+
+.footer-nav li {
+    margin-bottom: 10px;
+}
+
+.footer-nav a {
+    color: #b2bec3;
+    text-decoration: none;
+    font-size: 0.95rem;
+}
+
+.footer-nav a:hover {
+    color: #ffffff;
+}
+
+.footer-bottom {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+}
+
+.footer-bottom p {
+    font-size: 0.8rem;
+    color: #95a5a6;
+}
+
+@media (max-width: 768px) {
+
+    .header-container,
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+
+    .nav-menu {
+        justify-content: center;
+    }
+}
