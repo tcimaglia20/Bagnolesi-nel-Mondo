@@ -31,6 +31,15 @@
     gap: 15px;
 }
 
+.hero-actions ul {
+    display: flex;
+    gap: 20px;
+}
+
+.hero-actions li {
+    list-style: none;
+}
+
 .hero-image-wrapper {
     width: 500px;
     height: 335px;
@@ -187,6 +196,21 @@
 
 .piazza-preview-footer {
     text-align: center;
+}
+
+.vault {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 50px;
+}
+
+.vault-text {
+    flex: 1;
+}
+
+.link-container {
+    margin-top: 25px;
 }
 
 @media (max-width: 900px) {
