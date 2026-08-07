@@ -13,4 +13,8 @@ router.get('/vault', (req, res) => {
     res.render('vault', { title: 'Vault' })
 });
 
+router.get('/vault-content/il-notiziario', (req, res) => {
+    res.render('vault-content/il-notiziario', { title: 'Il Notiziario' })
+});
+
 module.exports = router;
