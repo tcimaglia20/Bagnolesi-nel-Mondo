@@ -6,6 +6,9 @@ const connectDB = require('./config/db')
 
 const app = express(); 
 
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
 connectDB();
 
 app.set('view engine', 'ejs');
@@ -21,7 +24,7 @@ app.set('views', [
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', (req, res) => {
-    res.render('index', { title: 'Bagnolesi Diaspora' });
+    res.render('index', { title: 'Bagnolesi nel Mondo' })
 });
 
 app.get('/about', (req, res) => {

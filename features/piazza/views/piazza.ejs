@@ -5,9 +5,26 @@
 </section>
 
 <section class="submit">
+    <form action="/piazza/threads" method="POST">
+        <label for="title">Title:</label>
+        <input type="text" name="title" id="title" required>
 
+        <label for="content">Content:</label>
+        <textarea name="content" id="content" required></textarea>
+
+        <button type="submit">Create Thread</button>
+    </form> 
 </section>
 
 <section class="piazza-board">
-    
+    <% if (threads.length === 0) { %>
+        <p class="no-threads">No posts available yet. Be the first to start a conversation!</p>
+    <% } else { %>
+        <% threads.forEach(function(thread) { %>
+            <a href="/piazza/<%= thread.id %>" class="piazza-card">
+                <h2 class="card-title"><%= thread.title %></h2>
+                <p class="card-content"><%= thread.content %></p>
+            </a>
+        <% }) %>
+    <% } %>    
 </section> 
