@@ -9,5 +9,18 @@
 </section>
 
 <section class="reply">
-    
+    <a href="/piazza/<%= thread._id %>/reply" class="btn">Reply</a>
+
+    <div class="replies-list">
+        <% if (replies && replies.length > 0) { %>
+            <% replies.forEach(function(singleReply) { %>
+                <div class="reply-card">
+                    <small><strong><%= singleReply.user ? singleReply.user.username: 'Anonymous' %></strong></small>
+                    <p><%= singleReply.reply %></p>
+                </div>
+            <% }) %>
+        <% } else { %>
+            <p>No replies yet. Be the first to reply!</p>
+        <% } %>
+    </div>
 </section>

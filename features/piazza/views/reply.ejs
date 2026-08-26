@@ -1,0 +1,9 @@
+<h1>Reply to: <%= thread.title %></h1>
+<form action="/piazza/replies" method="POST">
+    <input type="hidden" name="thread" value="<%= thread.id %>">
+    <input type="hidden" name="user" value="<%= currentUser.id %>">
+    <textarea name="reply" placeholder="Write your reply here ...">
+
+    </textarea>
+    <button type="submit">Submit Reply</button>
+</form>
