@@ -11,7 +11,8 @@ const ThreadSchema = new mongoose.Schema({
     tags: [{
         type: String,
         trim: true
-    }]
+    }],
+    isDeleted: { type: Boolean, default: false }
 }, {
     timestamps: true
 })

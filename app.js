@@ -31,6 +31,16 @@ app.get('/about', (req, res) => {
     res.render('about', { title: 'About Us' });
 });
 
+app.use((req, res, next) => {
+    const urlRole = req.query.role || 'user';
+    req.user = {
+        _id: "65a7bc2e1a3b4c5d6e7f8g9h",
+        username: "John",
+        role: urlRole
+    };
+    next();
+})
+
 app.use('/piazza', require('./features/piazza/piazza.routes'));
 app.use('/heritage', require('./features/heritage/heritage.routes'));
 
