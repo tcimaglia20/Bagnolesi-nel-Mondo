@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const Thread = require('./models/Thread');
-const { getReplyWithUser, getFullThread } = require('./controllers/piazzaController');
-const Reply = require('./models/Reply');
+const Thread = require('../models/Thread');
+const { getReplyWithUser, getFullThread } = require('../controllers/piazzaController');
+const Reply = require('../models/Reply');
 
-const { requireAdmin } = require('../../middleware/auth');
-const piazzaController = require('./controllers/piazzaController');
+const { requireAdmin } = require('../../../middleware/auth');
+const piazzaController = require('../controllers/piazzaController');
 
 router.get('/', async (req, res) => {
     try {
