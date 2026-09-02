@@ -1,0 +1,65 @@
+<% if (error) { %>
+    <p style="color: red;">
+        <%= error %>
+    </p>
+    <% } %>
+
+<form action="/auth/register" method="POST">
+
+    <div>
+        <label for="username">Username: </label>
+        <input type="text" id="username" name="username" value="<%= username || '' %>" required>
+    </div>
+
+    <br>
+
+    <div>
+        <label for="email">Email: </label>
+        <input type="text" id="email" name="email" value="<%= email || '' %>" required>
+    </div>
+
+    <br>
+
+    <div>
+        <label for="password">Password: </label>
+        <input 
+            type="password" 
+            id="password" 
+            name="password" 
+            pattern="(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&.]).{8,}" 
+            title="Must be at least 8 characters and contain a letter, a number, and a symbol."
+            required>
+    </div>
+
+    <div>
+        <input type="checkbox" id="togglePassword">
+        <label for="togglePassword">Show Password</label>
+    </div>
+
+    <br>
+    
+    <div>
+        <label for="confirmPassword">Confirm Password: </label>
+        <input 
+            type="password" 
+            id="confirmPassword" 
+            name="confirmPassword" 
+            required>
+    </div>
+
+    <button type="submit">Create Account</button>
+    <a href="./login">Have an account. Log in here!</a>
+</form>
+
+<script>
+    const password = document.getElementById('password')
+    const togglePassword = document.getElementById('togglePassword')
+
+    togglePassword.addEventListener('change', function() {
+        if (this.checked) {
+            password.type = 'text';
+        } else {
+            password.type = 'password';
+        }
+    })
+</script>

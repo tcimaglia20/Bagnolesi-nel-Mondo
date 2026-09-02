@@ -23,7 +23,8 @@ app.set('views', [
     path.join(__dirname, 'features/home/views'),
     path.join(__dirname, 'features/piazza/views'),
     path.join(__dirname, 'features/heritage/views'),
-    path.join(__dirname, 'features/auth/views')
+    path.join(__dirname, 'features/auth/views'),
+    path.join(__dirname, 'features/dashboard/views')
 ]);
 
 app.use(express.static(path.join(__dirname, 'public')));
@@ -33,7 +34,7 @@ app.use(session({
     secret: process.env.SESSION_SECRET || 'default_secret',
     resave: false,
     saveUninitialized: false,
-    cookie: { maxAge: 1000 * 60 * 60 * 24 } // 1 day
+    cookie: { maxAge: 900000 } // 15 minutes
 }))
 
 // --- ROUTES ---
@@ -41,11 +42,13 @@ const homeRoutes = require('./features/home/routes/home.routes');
 const authRoutes = require('./features/auth/routes/auth.routes');
 const piazzaRoutes = require('./features/piazza/routes/piazza.routes');
 const heritageRoutes = require('./features/heritage/routes/heritage.routes');
+const dashRoutes = require('./features/dashboard/routes/dash.routes');
 
 app.use('/', homeRoutes);
 app.use('/auth', authRoutes);
 app.use('/piazza', piazzaRoutes);
 app.use('/heritage', heritageRoutes);
+app.use('/dashboard', dashRoutes);
 
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
