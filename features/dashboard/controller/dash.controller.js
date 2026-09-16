@@ -2,7 +2,7 @@ const User = require('../../../models/User');
 
 const userDashboard = (req, res) => {
     try {
-        const loggedInUser = req.session.user;
+        const loggedInUser = req.user;
 
         const currentHour = new Date().getHours();
         let greeting = "Welcome";
@@ -13,6 +13,7 @@ const userDashboard = (req, res) => {
         res.render('dashboard', {
             title: "Your Dashboard",
             user: loggedInUser,
+            username: loggedInUser.username,
             greeting: greeting,
             serverTime: new Date().toLocaleTimeString(),
         })
@@ -26,7 +27,7 @@ const adminDashboard = (req, res) => {
     try {
         res.render('admin', {
             title: 'Admin Panel',
-            user: req.session.user,
+            user: req.user,
         });
     } catch (error) {
         res.status(500).send("Error loading admin dashboard");

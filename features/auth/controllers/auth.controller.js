@@ -11,6 +11,8 @@ const getLoginData = (req, res) => {
 const getRegisterData = (req, res) => {
     return {
         title: "Register",
+        username: '',
+        email: '',
         error: null
     }
 };
@@ -51,7 +53,7 @@ const register = async (req, res) => {
         if (!passwordRegex.test(password)) {
             return res.render('../views/register', {
                 title: "Regsiter",
-                error: null,
+                error: 'Password must be at least 8 characters long and include a letter, number, and special character.',
                 username, 
                 email
             })
@@ -88,52 +90,8 @@ const register = async (req, res) => {
     }
 };
 
-const login = async (req, res) => {
-    try {
-        const { email, password } = req.body;
-
-        if (!email || !password) {
-            return res.render('../views/login', {
-                title: 'Login',
-                error: 'Please fill out all required fields.'
-            })
-        }
-
-        const user = await User.findOne({ email });
-
-        if (!user ) {
-            return res.render('../views/login', {
-                title: 'Login',
-                error: 'Account does not exist. Please register first.'
-            })
-        }
-
-        if (!await bcrypt.compare(password, user.password)) {
-            return res.render('../views/login', {
-                title: 'Login',
-                error: 'Incorrect password. Please try again.'
-            })
-        }
-
-        req.session.user = {
-            id: user._id,
-            username: user.username,
-            email: user.email,
-            role: user.role
-        }
-
-        res.redirect('/dashboard');
-    } catch (error) {
-        res.render('../views/login', {
-            title: 'Login',
-            error: 'An error occurred during login. Please try again.'
-        })
-    }
-}
-
 module.exports = {
     getLoginData,
     getRegisterData,
     register,
-    login
 }

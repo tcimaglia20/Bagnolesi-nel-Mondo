@@ -6,16 +6,34 @@
 
     <div>
         <label for="email">Email: </label>
-        <input type="text" id="email" name="email" required>
+        <input type="email" id="email" name="email" required>
     </div>
 
     <br>
     
     <div>
         <label for="password">Password: </label>
-        <input type="text" id="password" name="password" required>
+        <input type="password" id="password" name="password" required>
     </div> 
+
+    <div>
+        <input type="checkbox" id="togglePassword">
+        <label for="togglePassword">Show Password</label>
+    </div>
 
     <button type="submit">Login</button>
     <a href="./register">New here! Register now!</a>
 </form>
+
+<script>
+    const password = document.getElementById('password')
+    const togglePassword = document.getElementById('togglePassword')
+
+    togglePassword.addEventListener('change', function () {
+        if (this.checked) {
+            password.type = 'text';
+        } else {
+            password.type = 'password';
+        }
+    })
+</script>
