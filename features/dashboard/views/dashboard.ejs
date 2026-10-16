@@ -1,0 +1,27 @@
+<h1><%= greeting %>, <%= user.username %>!</h1>
+
+<div style="background: #f4f4f4; padding: 15px; border-radius: 8px;">
+    <h3>Your Profile Information</h3>
+    <p><strong>Email: <%= user.email %></strong></p>
+
+    <p><strong>Account Type: </strong></p>
+        <% if (user.role === 'admin') { %>
+            <span class="badge admin-badge">Administrator</span>
+        <% } else { %>
+            <span class="badge">Standard User</span>
+        <% } %>
+</div>
+
+<% if (user.role === 'admin') { %>
+    <div style="margin-top: 20px; border: 1px solid red; padding: 10px;">
+        <h4>Admin Quick Links</h4>
+        <a href="/dashboard/admin">Go to Control Panel</a>
+    </div>
+<% } %>
+
+<p style="font-size: 12px; color: gray; margin-top: 30px;">
+    Dashboard last synced at: <%= serverTime %>
+</p>
+
+<hr>
+<a href="/auth/logout">Log Out Safely</a>

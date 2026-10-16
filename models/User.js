@@ -21,6 +21,11 @@ const UserSchema = new mongoose.Schema({
     avatar: {
         type: String,
         default: 'https://placehold.co'
+    },
+    role: {
+        type: String,
+        enum: ['user', 'admin', 'moderator'],
+        default: 'user'
     }
 }, { timestamps: true }
 );

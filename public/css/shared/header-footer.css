@@ -74,7 +74,7 @@
     background-color: var(--color-dark);
     color: #ecf0f1;
     padding: 60px 0 20px 0;
-    margin-top: 80px;
+    margin-top: auto;
 }
 
 .footer-container {
