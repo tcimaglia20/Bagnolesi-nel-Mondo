@@ -1,4 +1,3 @@
-const User = require('../../../models/User');
 const Reply = require('../models/Reply');
 const Thread = require('../models/Thread');
 

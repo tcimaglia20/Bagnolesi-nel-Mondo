@@ -5,13 +5,14 @@ const { getReplyWithUser, getFullThread } = require('../controllers/piazzaContro
 const Reply = require('../models/Reply');
 
 const { requireAdmin } = require('../../../middleware/auth');
+const requireAuth = require('../../../middleware/auth');
 const piazzaController = require('../controllers/piazzaController');
 
 router.get('/', async (req, res) => {
     try {
         let query = {}
         if (req.user?.role !== 'admin') {
-            query = { isDeleted: false || null }
+            query = { isDeleted: false }
         }
         const threads = await Thread.find(query).populate('user', 'username')
         res.render('piazza', { title: 'The Piazza' , threads: threads })
@@ -22,7 +23,11 @@ router.get('/', async (req, res) => {
 
 router.post('/threads', async (req, res) => {
     try {
-        const newThread = new Thread(req.body);
+        const newThread = new Thread({
+            title: req.body.title,
+            content: req.body.content,
+            user: req.user._id
+        });
         await newThread.save();
         res.redirect('/piazza')
     } catch (error) {

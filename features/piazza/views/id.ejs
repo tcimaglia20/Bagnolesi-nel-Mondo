@@ -9,7 +9,7 @@
 
     <% if (typeof user !== 'undefined' && user && user.role === 'admin') { %> 
         <div class="admin-control">
-            <% if (!thread.isDeleted) { %>
+            <% if (thread.isDeleted) { %>
                 <button 
                     class="admin-restore-btn" 
                     data-thread-id="<%= thread._id %>" 
